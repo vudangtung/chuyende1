@@ -255,9 +255,10 @@ async function loadBrands() {
   // Tạo HTML động cho brand-grid với link clickable
   let html = '';
   randomBrands.forEach(brand => {
+    const logoUrl = brand.logo.startsWith('http') || brand.logo.startsWith('/') ? brand.logo : '/storage/' + brand.logo;
     html += `
       <a href="/thuong-hieu/${encodeURIComponent(brand.name)}" class="brand-link">
-        <img src="${brand.logo}" alt="${brand.name}" loading="lazy">
+        <img src="${logoUrl}" alt="${brand.name}" loading="lazy">
       </a>
     `;
   });

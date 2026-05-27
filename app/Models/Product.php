@@ -23,4 +23,15 @@ class Product extends Model
     {
         return 'name';
     }
+
+    public function getImageAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        if (Str::startsWith($value, ['http://', 'https://'])) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+    }
 }

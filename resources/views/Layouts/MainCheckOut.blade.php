@@ -840,7 +840,7 @@ document.addEventListener('DOMContentLoaded', function() {
                                (inputCode === 'DH' + storedQRCode);
 
                 if (!isValid) {
-                    alert('Mã giao dịch không đúng!\n\n✓ Mã đúng: ${storedTransferCode || storedQRCode}\n✗ Bạn nhập: ${inputCode}\n\nVui lòng nhập đúng nội dung chuyển khoản!');
+                    alert(`Mã giao dịch không đúng!\n\n✓ Mã đúng: ${storedTransferCode || storedQRCode}\n✗ Bạn nhập: ${inputCode}\n\nVui lòng nhập đúng nội dung chuyển khoản!`);
                     transactionInput.focus();
                     transactionInput.select();
                     return;
@@ -875,7 +875,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         window.location.href = '/';
                     }
                 } else {
-                    alert('Lỗi' + (data.message || 'Có lỗi xảy ra!'));
+                    alert('Lỗi: ' + (data.message || 'Có lỗi xảy ra!'));
                 }
             } catch (error) {
                 console.error('Submit error:', error);

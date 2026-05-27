@@ -47,4 +47,15 @@ class OrderItem extends Model
     {
         $this->attributes['price'] = Helpers::parse($value); 
     }
+
+    public function getProductImageAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        if (\Illuminate\Support\Str::startsWith($value, ['http://', 'https://'])) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+    }
 }

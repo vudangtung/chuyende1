@@ -21,4 +21,15 @@ class Brand extends Model
     {
         return 'name';
     }
+
+    public function getLogoAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        if (Str::startsWith($value, ['http://', 'https://'])) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+    }
 }

@@ -47,4 +47,15 @@ class Cart extends Model
     {
         return $this->price_numeric * $this->quantity;
     }
+
+    public function getProductImageAttribute($value)
+    {
+        if (!$value) {
+            return null;
+        }
+        if (\Illuminate\Support\Str::startsWith($value, ['http://', 'https://'])) {
+            return $value;
+        }
+        return asset('storage/' . $value);
+    }
 }

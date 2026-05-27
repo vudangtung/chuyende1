@@ -38,9 +38,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Tạo HTML động cho brand-grid với link clickable
     let html = '';
     randomBrands.forEach(brand => {
+      const logoUrl = brand.logo.startsWith('http') || brand.logo.startsWith('/') ? brand.logo : '/storage/' + brand.logo;
       html += `
         <a href="/thuong-hieu/${encodeURIComponent(brand.name)}" class="brand-link">
-          <img src="${brand.logo}" alt="${brand.name}" loading="lazy">
+          <img src="${logoUrl}" alt="${brand.name}" loading="lazy">
         </a>
       `;
     });
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 <span class="brand-name">${b.name}</span>
                 ${
                   b.logo
-                    ? `<div class="brand-logo"><img src="${b.logo}" alt="${b.name} logo"></div>`
+                    ? `<div class="brand-logo"><img src="${b.logo.startsWith('http') || b.logo.startsWith('/') ? b.logo : '/storage/' + b.logo}" alt="${b.name} logo"></div>`
                     : ""
                 }
               </a>
